@@ -1,6 +1,8 @@
 import React from "react";
+import API from "../utils/API";
 
-function Table() {
+
+function Table( {employees} ) {
     console.log("employees", employees);
 
   return (
@@ -14,16 +16,16 @@ function Table() {
         </tr>
       </thead>
       <tbody>
-        {employees.map((employee) => {
-          return (
+        {employees[0]!== undefined && employees[0].name!== undefined ?  (employees.map(employee)) : 
+           (
             <tr>
               <th scope="row">1</th>
               <td>{employee.name.first}</td>
               <td>Otto</td>
               <td>@mdo</td>
             </tr>
-          );
-        })}
+          )
+        })
       </tbody>
     </table>
   );

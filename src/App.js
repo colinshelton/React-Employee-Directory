@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sort from "./components/Sort";
 import Filter from "./components/Filter"
-//import Table from "./components/Table";
+import Table from "./components/Table";
 import API from "./utils/API";
 
 // const EmployeeList = (props) => (
@@ -27,21 +27,20 @@ import API from "./utils/API";
 
 function App() {
   const [employeeState, setEmployeeState] = useState([{}]);
-
   useEffect(() => {
-    API.getUsers().then((res) => {
-      console.log("res.data.results", res.data.results);
-      setEmployeeState(res.data.results);
-    });
+    async function fetchData() {
+      const response = await API.getUsers();
+      setEmployeeState(response.data.results);
+      console.log(response.data.results);
+    }
+    fetchData();
   }, []);
-
-  console.log(employeeState);
   return (
     <div>
       <h1 className="header">Employee Directory App</h1>
-      <Sort  />
+      <Sort />
       <Filter />
-      {/* <Table employees={employeeState}/> */}
+      <Table employees={employeeState} />
     </div>
   );
 }
