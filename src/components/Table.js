@@ -8,6 +8,7 @@ class Table extends Component {
     //use this for employee table
     filteredEmployees: [],
     userInput: "",
+    ascending: true,
   };
 
   async componentDidMount() {
@@ -29,6 +30,28 @@ class Table extends Component {
     });
   };
 
+  handleSort = (e) => {
+    const current = this.state.ascending;
+    let sorted = [];
+    if (current) {
+      sorted = this.state.filteredEmployees.sort(function (a, b) {
+        return a.name.last
+          .toLowerCase()
+          .localeCompare(b.name.last.toLowerCase());
+      });
+    } else {
+      sorted = this.state.filteredEmployees.sort(function (a, b) {
+        return b.name.last
+          .toLowerCase()
+          .localeCompare(a.name.last.toLowerCase());
+      });
+    }
+    this.setState({
+      filteredEmployees: sorted,
+      ascending: !current,
+    });
+  };
+
   // SORT by name need click handler for collum header, instead of filter call .sort and provide state value that is asending or descending
   // sorted array will be off of second array
   //.
@@ -39,6 +62,7 @@ class Table extends Component {
 
   render() {
     console.log("employees", this.state.employees);
+    console.log(this.state.filteredEmployees);
 
     return (
       <div className="container">
@@ -50,7 +74,9 @@ class Table extends Component {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">ID</th>
+              <th scope="col" onClick={this.handleSort}>
+                Click to SORT ^
+              </th>
               <th scope="col">First</th>
               <th scope="col">Last</th>
             </tr>
@@ -60,7 +86,7 @@ class Table extends Component {
             this.state.filteredEmployees[0].name !== undefined ? (
               this.state.filteredEmployees.map((employee) => {
                 return (
-                  <tr>
+                  <tr key={employee.login.uuid}>
                     <td>{employee.id.name}</td>
                     <td>{employee.name.first}</td>
                     <td>{employee.name.last}</td>
@@ -70,7 +96,6 @@ class Table extends Component {
             ) : (
               <></>
             )}
-            )
           </tbody>
         </table>
       </div>
