@@ -12,6 +12,8 @@ Navigate to deployed location
 
 # Usage: 
 
+![Screen Shot 2020-10-09 at 11 32 10 AM](https://user-images.githubusercontent.com/61765683/95602555-13f6b300-0a23-11eb-8e82-e8fcd7b4e13c.png)
+
 Follow the deployed link: https://colinshelton.github.io/React-Employee-Directory/
 10 users are populated, users can then be sorted in alphabetical order by last name by clicking ‘sort’ and in descending order by click sort a second time. 
 Search by last name in the search box and the table filters users dynamically by last name. 
