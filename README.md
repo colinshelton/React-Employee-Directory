@@ -20,4 +20,4 @@ Search by last name in the search box and the table filters users dynamically by
 
 
 # Contributing:
-To contribute, please follow the [Contributor Covenant] (https://www.contributor-covenant.org/).
+To contribute, please follow the ![Contributor Covenant] (https://www.contributor-covenant.org/).
