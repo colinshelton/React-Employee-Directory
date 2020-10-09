@@ -75,7 +75,7 @@ class Table extends Component {
           <thead>
             <tr>
               <th scope="col" onClick={this.handleSort}>
-                Click to SORT ^
+                Click to SORT {this.state.ascending ? "^" : "⌄"}
               </th>
               <th scope="col">First</th>
               <th scope="col">Last</th>
@@ -84,10 +84,10 @@ class Table extends Component {
           <tbody>
             {this.state.filteredEmployees[0] !== undefined &&
             this.state.filteredEmployees[0].name !== undefined ? (
-              this.state.filteredEmployees.map((employee) => {
+              this.state.filteredEmployees.map((employee, index) => {
                 return (
                   <tr key={employee.login.uuid}>
-                    <td>{employee.id.name}</td>
+                    <td>{index + 1}</td>
                     <td>{employee.name.first}</td>
                     <td>{employee.name.last}</td>
                   </tr>
